@@ -1,1 +1,1 @@
-console.log('random')
+document.getElementById('random').innerText = Math.random();
