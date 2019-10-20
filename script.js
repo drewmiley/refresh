@@ -1,1 +1,3 @@
-console.log('script')
+const refresh = () => {
+    console.log('script')
+}
