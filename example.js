@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const TEXT_TO_FIND = '1000';
+const TEXT_TO_FIND = '100';
 const LOG = true;
 const PAGE = 'http://localhost:3002';
 
