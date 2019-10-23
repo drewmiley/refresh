@@ -1,23 +1,19 @@
 const puppeteer = require('puppeteer');
 
-const TEXT_TO_FIND = '100';
-const LOG = true;
-const PAGE = 'http://localhost:3002';
-
 (async () => {
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
   let refreshes = 0;
-  const start = LOG ? Date.now() : null;
-  await page.goto(PAGE);
+  const start = process.env.LOG ? Date.now() : null;
+  await page.goto(process.env.PAGE);
   let body = await page.content();
-  while (!body.includes(TEXT_TO_FIND)) {
+  while (!body.includes(process.env.TEXT)) {
     await page.reload();
     refreshes++;
     body = await page.content();
   }
-  const end = LOG ? Date.now() : null;
-  if (LOG) {
+  const end = process.env.LOG ? Date.now() : null;
+  if (process.env.LOG) {
       console.log(`Time taken in seconds: ${ Math.ceil((end - start) / 1000) }`)
       console.log(`Total refreshes: ${ refreshes }`)
   }
